@@ -1,0 +1,109 @@
+.cab{
+    background-color:white ;
+height: 96px;
+width: 100%;
+}
+.cab > button{
+    background-color: rgb(39, 38, 36);
+    width: 144px;
+    height: 50px;
+   
+    color: white;
+    position: relative;
+    left: 70%;
+    border-radius: 1px;
+   
+}
+.cab >.entrar{
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 1px;
+    
+}
+button:hover{
+    background-color: rgb(5, 5, 5);
+    cursor: pointer;
+}
+.cab > label{
+    background-color: rgb(39, 38, 36);
+    
+    
+    color: white;
+    padding: 15px;
+    position: relative;
+    left:100px ;
+    text-align: center;
+    border-radius: 1px;
+}
+.login{
+    background-color: rgba(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left:50% ;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+    display: block;
+}
+button{
+    width: 100%;
+    padding: 18px;
+    border: none;
+    background-color: rgb(59, 56, 56);
+    color: rgb(255, 255, 255);
+}
+input{
+   
+        border-radius: 2px;
+        border-color: rgb(179, 179, 179);
+        width:440px ;
+        height: 40px; ;
+        display: block;
+        margin-bottom: 18px;
+}
+
+h5{
+    text-align: center;
+}
+h1{
+    text-align: center;
+    position: relative;
+    bottom: 60px;
+    
+}
+a{
+    text-decoration: none;
+    color:rgb(59, 56, 56); 
+    text-align: center;
+    position: relative;
+    left: 39%;
+    top: 20px;
+}
+h6{
+    text-align: right;
+}
+.login{
+    color: rgb(54, 54, 54);
+}
+.senha{
+    position: relative;
+    bottom: 30px;
+}
+.h4{
+    position: relative;
+    bottom: 20px;
+}
+.aa{
+    position: relative;
+    top: 0px;
+}
+.email{
+    position: relative;
+    top:15px;
+    color: rgb(77, 75, 75);
+
+}
+.but{
+    position: relative;
+    top: 20px;
+}
