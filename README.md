@@ -94,13 +94,13 @@ Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e
 </table>
 
 
-## Para instalar o projeto
+## :bulb: Para instalar o projeto
 
 ```sh
 npm install
 ```
 
-## Para rodar o projeto
+## :running_woman: Para rodar o projeto
 
 ```sh
 npm run dev
