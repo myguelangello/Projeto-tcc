@@ -1,12 +1,9 @@
-<h1 align="center">Welcome to Tcc_Filter 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
-  </a>
-</p>
+<h1 align="center">Dory 🐟</h1>
 
-## Requisitos
+## :computer: Projeto
+Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e Mídias Digitais a encontrarem um professor orientador para seu TCC.
+
+## :pushpin: Requisitos
 
 <table>
   <tr>
@@ -97,26 +94,22 @@
 </table>
 
 
-## Install
+## Para instalar o projeto
 
 ```sh
 npm install
 ```
 
-## Run tests
+## Para rodar o projeto
 
 ```sh
-npm run test
+npm run dev
 ```
 
-## Author
+## :memo: Licença
 
-👤 **Spaceship**
+Este projeto está sob a licença MIT. Veja o [LICENSE](https://img.shields.io/badge/License-ISC-yellow.svg) para maiores informações.
 
-* Github: (https://github.com/Spaceship-PI1/Projeto-tcc)
+---
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
+Feito com 💜 by [Spaceship](https://github.com/Spaceship-PI1)
