@@ -3,6 +3,15 @@
 ## :computer: Projeto
 Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e Mídias Digitais a encontrarem um professor orientador para seu TCC.
 
+
+## :rocket: Tecnologias
+
+Este projeto foi desenvolvido com as seguintes tecnologias:
+
+- [MongoDB](https://www.mongodb.com/)
+- [Axios](https://github.com/axios/axios)
+- [Express](https://expressjs.com/)
+
 ## :pushpin: Requisitos
 
 <table>
@@ -94,13 +103,13 @@ Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e
 </table>
 
 
-## :bulb: Para instalar
+## :bulb: Como instalar
 
 ```sh
 npm install
 ```
 
-## :running_woman: Para rodar
+## :running_woman: Como executar
 
 ```sh
 npm run dev
