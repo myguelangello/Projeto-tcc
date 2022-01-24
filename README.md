@@ -8,9 +8,13 @@ Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e
 
 Este projeto foi desenvolvido com as seguintes tecnologias:
 
+- [NodeJS](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/)
-- [Axios](https://github.com/axios/axios)
 - [Express](https://expressjs.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [JSON Web Token](https://jwt.io/introduction)
+- [Nodemailer](https://nodemailer.com/about/)
+- [Axios](https://github.com/axios/axios)
 
 ## :pushpin: Requisitos
 
