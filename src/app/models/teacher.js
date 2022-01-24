@@ -1,5 +1,5 @@
-const mongoose = require('../../database');
-const bcrypt = require('bcryptjs');
+const mongoose = require('../../database')
+const bcrypt = require('bcryptjs')
 /* Schema são mais ou menos os campos que vão ter dentro do bd */
 const TeacherSchema = new mongoose.Schema({
   /* CADASTRO BÁSICO */
@@ -75,7 +75,7 @@ const TeacherSchema = new mongoose.Schema({
       active: Boolean,
       semester: {
         type: String,
-        required: false,
+        required: true,
       },
     },
   ],
@@ -100,16 +100,16 @@ const TeacherSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-});
+})
 
 /* encriptando a senha antes de salvá-la */
 TeacherSchema.pre('save', async function (next) {
-  const hash = await bcrypt.hash(this.password, 10);
-  this.password = hash;
-  next();
-});
+  const hash = await bcrypt.hash(this.password, 10)
+  this.password = hash
+  next()
+})
 
 //definindo o model
-const Teacher = mongoose.model('Teacher', TeacherSchema);
+const Teacher = mongoose.model('Teacher', TeacherSchema)
 
-module.exports = Teacher;
+module.exports = Teacher
