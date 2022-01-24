@@ -3,22 +3,24 @@ const authMiddleware = require('../middlewares/auth')
 
 const AuthController = require('../controllers/authController')
 const EditController = require('../controllers/editController')
+const TccController = require('../controllers/tccController')
 
 module.exports = (app) => {
-  /* ROTAS DE AUTENTICAÇÃO */
-
   const authRoutes = express.Router()
+  const tccRoutes = express.Router()
 
-  /* SIGN UP */
+  /* rotas de tcc */
+  tccRoutes.post('/register', authMiddleware, TccController.register)
+
+  /* Rotas de /auth */
+  /* Signup */
   authRoutes.post('/signup', AuthController.signup)
-
-  /* AUTHENTICATE/LOGIN */
+  /* Autenticação */
   authRoutes.post('/authenticate', AuthController.authenticate)
-  /* FORGOT PASSWORD */
+  /* Esqueceu senha */
   authRoutes.post('/forgot_password', AuthController.forgotPassword)
-  /* RESET PASSWORD */
+  /* Resetar senha */
   authRoutes.post('/reset_password', AuthController.resetPassword)
-
   //exemplo de rota logout
   authRoutes.post('/logout', authMiddleware, function (req, res) {
     res.json({ auth: false, token: null })
@@ -35,6 +37,7 @@ module.exports = (app) => {
     authMiddleware,
     EditController.identificationTeacher
   )
-  /* configuração da rota de authenticação */
+  /* configuração das rotas e diretórios */
   app.use('/auth', authRoutes)
+  app.use('/tcc', tccRoutes)
 }
