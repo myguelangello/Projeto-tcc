@@ -27,12 +27,12 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
   <tr>
     <td>RF G001</td>
     <td>Autenticar (login)</td>
-    <td>Iniciado</td>
+    <td>Finalizado</td>
   </tr>
   <tr>
     <td>RF G002</td>
     <td>Autenticar (login)</td>
-    <td>Iniciado</td>
+    <td>Finalizado</td>
   </tr>
   <tr>
     <td>RF G003</td>
