@@ -10,7 +10,7 @@ const Teacher = require('../models/teacher')
 
 function generateToken(payload = {}) {
   return jwt.sign(payload, authConfig.secret, {
-    expiresIn: 86400,
+    expiresIn: 86400, // 1 dia
   })
 }
 
@@ -20,7 +20,7 @@ module.exports = {
     if (!firstName || !lastName || !password || !role || !email) {
       return res
         .status(202)
-        .json({ message: 'Por favor, preencha todos os campos.' })
+        .json({ failed: 'Por favor, preencha todos os campos.' })
     }
 
     try {
@@ -30,75 +30,84 @@ module.exports = {
         (await Teacher.findOne({ email }))
       ) {
         console.log('Email já existe no banco')
-        return res.status(202).json({ message: 'Esse usuário já existe.' })
+        return res.status(202).json({ failed: 'Esse usuário já existe.' })
       }
 
+      let user
       /* verificar o tipo do usuário */
       if (role === 'student') {
-        const student = await Student.create(req.body)
+        user = await Student.create(req.body)
 
-        student.password = undefined
+        user.password = undefined
 
         return res.status(201).json({
-          student,
-          token: generateToken({ id: student.id, role: student.role }),
+          user,
+          token: generateToken({ id: user.id, role: user.role }),
         })
       } else if (role === 'teacher') {
-        const teacher = await Teacher.create(req.body)
+        user = await Teacher.create(req.body)
 
-        teacher.password = undefined
+        user.password = undefined
 
         return res.status(201).json({
-          teacher,
-          token: generateToken({ id: teacher.id, role: teacher.role }),
+          user,
+          token: generateToken({ id: user.id, role: user.role }),
         })
       } else {
         console.log(role)
-        return res.status(202).json({ message: 'Perfil inválido' })
+        return res.status(202).json({ failed: 'Perfil inválido' })
       }
     } catch (error) {
       consle.log(error)
-      return res.status(202).json({ error: 'Falha no cadastro' })
+      return res.status(202).json({ failed: 'Falha no cadastro' })
     }
   },
 
   async authenticate(req, res) {
     const { email, password } = req.body
+    console.log(req.body)
     if (!email || !password) {
       return res
         .status(202)
-        .json({ message: 'Por favor, preencha todos os campos.' })
+        .json({ failed: 'Por favor, preencha todos os campos.' })
     }
 
     try {
       let user
+      let student
+      let teacher
       /* buscando o email e a senha no banco nas respectivas collections */
-      let student = await Student.findOne({ email }).select('+password')
-      let teacher = await Teacher.findOne({ email }).select('+password')
 
-      /* verificar se o email é existe e qual o seu perfil */
+      if (
+        !(student = await Student.findOne({ email }).select('+password')) &&
+        !(teacher = await Teacher.findOne({ email }).select('+password'))
+      ) {
+        return res.status(202).json({
+          failed: 'Oops, login ou senha incorretos, verifique seus dados 😊',
+        })
+      }
+
+      /* verificar se o email existe e qual o seu perfil */
       if (student) {
         user = student
       } else if (teacher) {
         user = teacher
-      } else {
-        /* se não achar o email o usuário não está cadastrado ou errou o email */
-        return res.status(404).json({ message: 'User not found' })
       }
 
-      /* estou comparando a senha digitada e a senha no banco estou usando o bcrypt.compare pq a senha foi encriptada, lá no model */
+      /* estou comparando a senha digitada e a senha no banco usando o bcrypt.compare pq a senha foi encriptada, lá no model */
       if (!(await bcrypt.compare(password, user.password))) {
-        return res.status(202).json({ message: 'Invalid password' })
+        return res.status(202).json({
+          failed: 'Oops, login ou senha incorretos, verifique seus dados 😊',
+        })
       }
 
       user.password = undefined
 
-      res
-        .status(200)
-        .json({
-          user,
-          token: generateToken({ id: teacher.id, role: teacher.role }),
-        })
+      res.status(200).json({
+        user,
+        token: generateToken({ id: user.id, role: user.role }),
+        success: 'Login efetuado com sucesso',
+      })
     } catch (error) {
       return res.status(400).json({ error: 'Authentication error' })
     }
